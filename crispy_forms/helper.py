@@ -214,7 +214,7 @@ class FormHelper(DynamicLayoutHandler):
             self.layout = self.build_default_layout(form)
 
     def build_default_layout(self, form):
-        return Layout(*form.fields.keys())
+        return Layout(*list(form.fields.keys()))
 
     def get_form_method(self):
         return self._form_method
@@ -378,7 +378,7 @@ class FormHelper(DynamicLayoutHandler):
         if self.formset_error_title:
             items['formset_error_title'] = self.formset_error_title.strip()
 
-        for attribute_name, value in self.__dict__.items():
+        for attribute_name, value in list(self.__dict__.items()):
             if attribute_name not in items and attribute_name not in ['layout', 'inputs'] and not attribute_name.startswith('_'):
                 items[attribute_name] = value
 

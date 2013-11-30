@@ -22,7 +22,7 @@ sys.path.insert(0, os.path.abspath('../crispy_forms'))
 sys.path.insert(0, os.path.abspath('../crispy_forms/templatetags'))
 sys.path.append(os.path.abspath('_themes'))
 
-import settings
+from . import settings
 from django.core.management import setup_environ
 setup_environ(settings)
 
@@ -46,8 +46,8 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'django-crispy-forms'
-copyright = u'2009-2013, Miguel Araujo and Daniel Greenfeld'
+project = 'django-crispy-forms'
+copyright = '2009-2013, Miguel Araujo and Daniel Greenfeld'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -185,8 +185,8 @@ htmlhelp_basename = 'django-crispy-formdoc'
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', 'django-crispy-forms.tex', u'django-crispy-forms Documentation',
-   u'Miguel Araujo', 'manual'),
+  ('index', 'django-crispy-forms.tex', 'django-crispy-forms Documentation',
+   'Miguel Araujo', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of

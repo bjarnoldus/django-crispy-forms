@@ -8,7 +8,7 @@ if not PY2:
     string_types = (str,)
     integer_types = (int,)
 else:
-    text_type = unicode
+    text_type = str
     binary_type = str
-    string_types = basestring
-    integer_types = (int, long)
+    string_types = str
+    integer_types = (int, int)

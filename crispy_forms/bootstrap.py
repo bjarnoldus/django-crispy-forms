@@ -80,7 +80,7 @@ class FormActions(LayoutObject):
             self.attrs['class'] = self.attrs.pop('css_class')
 
     def render(self, form, form_style, context, template_pack=TEMPLATE_PACK):
-        html = u''
+        html = ''
         for field in self.fields:
             html += render_field(field, form, form_style, context, template_pack=template_pack)
 
@@ -188,7 +188,7 @@ class Container(Div):
         """
         check if field_name is contained within tab.
         """
-        return field_name in map(lambda pointer: pointer[1], self.get_field_names())
+        return field_name in [pointer[1] for pointer in self.get_field_names()]
 
     def render(self, form, form_style, context):
         if self.active:
@@ -250,7 +250,7 @@ class TabHolder(ContainerHolder):
             tab.active = False
 
         # The first tab with errors will be active
-        self.first_container_with_errors(form.errors.keys()).active = True
+        self.first_container_with_errors(list(form.errors.keys())).active = True
 
         for tab in self.fields:
             content += render_field(
@@ -294,7 +294,7 @@ class Accordion(ContainerHolder):
             self.css_id = "-".join(["accordion", text_type(randint(1000, 9999))])
 
         # first group with errors or first groupt will be visible, others will be collapsed
-        self.first_container_with_errors(form.errors.keys()).active = True
+        self.first_container_with_errors(list(form.errors.keys())).active = True
 
         for group in self.fields:
             group.data_parent = self.css_id

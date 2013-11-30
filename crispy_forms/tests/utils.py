@@ -60,7 +60,7 @@ except ImportError:
 
         def enable(self):
             override = UserSettingsHolder(settings._wrapped)
-            for key, new_value in self.options.items():
+            for key, new_value in list(self.options.items()):
                 setattr(override, key, new_value)
             settings._wrapped = override
 
